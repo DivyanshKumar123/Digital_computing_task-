@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calulater.css">
+</head>
+<body>
+    <div class="main">
+        <input type="text" name="" id="input">
+        <div class="button">
+            <button>sin</button>
+            <button>cos</button>
+            <button>tan</button>
+            <button onckick="addNumber()">1</button>
+            <button onckick="addNumber()">2</button>
+            <button onckick="addNumber()">3</button>
+            <button onckick="addNumber()">4</button>
+            <button onckick="addNumber()">5</button>
+            <button onckick="addNumber()">6</button>
+            <button onckick="addNumber()">7</button>
+            <button onckick="addNumber()">8</button>
+            <button onckick="addNumber()">9</button>
+            <button onckick="addNumber()">0</button>
+            <button onclick="addNumber()">+</button>
+            <button onclick="calculate()">-</button>
+            <button>=</button>
+            <button>c</button>
+            
+        </div>
+    </div>
+</body>
+<script src="calulater.js onckick="addNumber()""></script>
+</html>
+<script>
+    function addNumber(num) {
+        var input = document.getElementById('input');
+        input.value += num;
+    }
+
+    function calculate() {
+        var input = document.getElementById('input');
+        try {
+            input.value = eval(input.value);
+        } catch (e) {
+            input.value = 'Error';
+        }
+    }
+
+    function clearInput() {
+        var input = document.getElementById('input');
+        input.value = '';
+    }
+
+    document.querySelectorAll('.button button').forEach(button => {
+        if (button.textContent === '=') {
+            button.addEventListener('click', calculate);
+        } else if (button.textContent === 'c') {
+            button.addEventListener('click', clearInput);
+        } else {
+            button.addEventListener('click', function() {
+                addNumber(this.textContent);
+            });
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
